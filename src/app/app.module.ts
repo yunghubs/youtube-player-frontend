@@ -8,12 +8,17 @@ import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { VideoViewComponent } from './video-view/video-view.component';
 import {YouTubePlayerModule} from '@angular/youtube-player';
+import { HistoryComponent } from './history/history.component';
+import { BookmarksComponent } from './bookmarks/bookmarks.component';
+import { ApiService } from './api.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
-    VideoViewComponent
+    VideoViewComponent,
+    HistoryComponent,
+    BookmarksComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +27,7 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
     FormsModule,
     YouTubePlayerModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

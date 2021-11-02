@@ -16,3 +16,9 @@ Year <input type="text"[(ngModel)]="selectedMovie.year"/><br>
 <app-search-bar (newLinkEvent)="getVideoID($event)"></app-search-bar>
 
 <app-video-view [parentData]="videoId"></app-video-view>
+
+<app-history [parentLink]="currentLink"
+            [parentHistory]="requestedLinks"
+            (newHistoryLinkEvent)="getVideoID($event)"
+           
+></app-history>

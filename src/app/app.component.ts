@@ -10,30 +10,48 @@ import { ApiService } from './api.service';
 })
 //class: contains variables somtiems title 
 export class AppComponent {
+  //static array mit object
   movies = [{title: 'test'}];
   selectedMovie: any;
-  title = 'blog'
+  
+  //static
+  //historyLinks = [{link: 'testlink'}];
 
-  //public videoIdTest = '0eWrpsCLMJQ';
-  currentLink = '';
+  requestedLinks: any;
+
+  public currentLink: any;
   public videoId = '';
   
   getVideoID(val: any)
   {
-    
     this.currentLink = val;
-    this.videoId = this.currentLink.split("v=")[1];
-
-    console.log(this.videoId);
-
+    this.videoId = this.currentLink.split("v=")[1]
     
   }
 
   //wir haben instanz von apiService --> Nutzung der getMovies Funktion dies returned observable 
-  constructor(private api:ApiService) {
+  constructor(private api: ApiService) {
     this.getMovies();
+    this.getHistory();
+    //this.createHistory();
     this.selectedMovie ={id: -1,title:'', desc:'', year: 0 };
+    this.requestedLinks ={id: -1, historyLink:''};
+   
   }
+  getHistory = () => {
+    //subscribing to the observable 
+    this.api.getAllHistorys().subscribe(
+      data => {
+        this.requestedLinks = data;
+        console.log(this.requestedLinks);
+        
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
   getMovies = () => {
     //subscribing to the observable 
     this.api.getAllMovies().subscribe(
@@ -50,6 +68,7 @@ export class AppComponent {
     this.api.getOneMovie(movie.id).subscribe(
       data => {
         
+        this.videoId = data.video;
         this.selectedMovie = data;
         
       },
@@ -58,7 +77,7 @@ export class AppComponent {
       }
     );
   } 
-
+  //bookmarks
   updateMovie = () => {
     this.api.updateMovie(this.selectedMovie).subscribe(
       data => {
@@ -71,7 +90,9 @@ export class AppComponent {
       }
     );  
   }
+  
 
+  //history
   createMovie = () => {
     this.api.createMovie(this.selectedMovie).subscribe(
       data => {
@@ -98,4 +119,5 @@ export class AppComponent {
     );  
   }
 
+  
 }
