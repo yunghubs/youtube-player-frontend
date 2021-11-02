@@ -1,3 +1,20 @@
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">Cover</h3>
+    </div>
+  </header>
+
+  <main class="px-3">
+    <h1>Cover your page.</h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <p class="lead">
+      <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+    </p>
+  </main>
+
+  
+
 <h1>List of movie </h1>
 <ul>
   <li *ngFor="let movie of movies">
@@ -9,16 +26,25 @@ Title <input type="text" [(ngModel)]="selectedMovie.title"/><br>
 Desc <input type="text"[(ngModel)]="selectedMovie.desc"/><br>
 Year <input type="text"[(ngModel)]="selectedMovie.year"/><br>
 
-<button (click)="updateMovie()" > PUT </button>
+<button class="btn btn-primary"(click)="updateMovie()" > PUT </button>
 <button (click)="createMovie()" > POST </button>
 <button (click)="deleteMovie()" > DELETE </button>
 
 <app-search-bar (newLinkEvent)="getVideoID($event)"></app-search-bar>
 
-<app-video-view [parentData]="videoId"></app-video-view>
+<app-video-view *ngIf='videoId' [parentData]="videoId"></app-video-view>
+
+<app-bookmarks [addBookmark]='addBookmark'></app-bookmarks>
 
 <app-history [parentLink]="currentLink"
             [parentHistory]="requestedLinks"
             (newHistoryLinkEvent)="getVideoID($event)"
            
 ></app-history>
+
+
+
+<footer class="mt-auto text-white-50">
+  <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+</footer>
+</div>

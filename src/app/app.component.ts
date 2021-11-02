@@ -17,7 +17,8 @@ export class AppComponent {
   //static
   //historyLinks = [{link: 'testlink'}];
 
-  requestedLinks: any;
+  requestedLinks: any = [];
+  bookmarks: any = [];
 
   public currentLink: any;
   public videoId = '';
@@ -27,23 +28,42 @@ export class AppComponent {
     this.currentLink = val;
     this.videoId = this.currentLink.split("v=")[1]
     
+    if (this.requestedLinks.some((requestedLink: any) => requestedLink.historyLink === val)){
+
+      return
+    }
+    
+    this.addHistory();
+    
   }
 
   //wir haben instanz von apiService --> Nutzung der getMovies Funktion dies returned observable 
   constructor(private api: ApiService) {
     this.getMovies();
     this.getHistory();
-    //this.createHistory();
+    this.getBookmarks();
     this.selectedMovie ={id: -1,title:'', desc:'', year: 0 };
-    this.requestedLinks ={id: -1, historyLink:''};
-   
+    
   }
   getHistory = () => {
     //subscribing to the observable 
     this.api.getAllHistorys().subscribe(
       data => {
-        this.requestedLinks = data;
-        console.log(this.requestedLinks);
+        this.requestedLinks = data.reverse();
+        
+        
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  getBookmarks = () => {
+    //subscribing to the observable 
+    this.api.getAllBookmarks().subscribe(
+      data => {
+        this.bookmarks = data.reverse();
         
       },
       error => {
@@ -105,6 +125,35 @@ export class AppComponent {
       }
     );  
   }
+
+  addHistory = () => {
+    this.api.createHistory(this.currentLink).subscribe(
+      data => {
+        
+        this.requestedLinks.unshift(data);
+        
+        
+      },
+      error => {
+        console.log(error);
+      }
+    );  
+  }
+
+  addBookmark = () => {
+    this.api.createBookmark(this.currentLink).subscribe(
+      data => {
+        
+        this.bookmarks.unshift(data);
+        
+        
+      },
+      error => {
+        console.log(error);
+      }
+    );  
+  }
+
 
   deleteMovie = () => {
     this.api.deleteMovie(this.selectedMovie.id).subscribe(
