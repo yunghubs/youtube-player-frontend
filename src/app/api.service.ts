@@ -45,7 +45,7 @@ export class ApiService {
 
 
 
-  
+
   getAllMovies(): Observable<any> {
     //.get takes in the url as its argument
     return this.http.get(this.baseurl + '/movies/',

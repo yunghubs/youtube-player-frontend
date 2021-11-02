@@ -1,7 +1,11 @@
 <p>bookmarks works!</p>
 
 <button (click)="addBookmark()"> Add to Bookmarks </button>
+<button (click)="getBookmarks()"> Show Bookmarks </button>
+<ul>
+    <li *ngFor="let entrie of bookmarks">
+        <a>{{entrie.bookmarkLink}}</a>
+    </li>
+</ul>
 
-<button> List all Bookmark Links </button>
 
-Indicator

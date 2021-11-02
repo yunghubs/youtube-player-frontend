@@ -18,7 +18,7 @@ export class AppComponent {
   //historyLinks = [{link: 'testlink'}];
 
   requestedLinks: any = [];
-  bookmarks: any = [];
+  public bookmarks: any = [];
 
   public currentLink: any;
   public videoId = '';
@@ -32,16 +32,14 @@ export class AppComponent {
 
       return
     }
-    
     this.addHistory();
-    
   }
 
   //wir haben instanz von apiService --> Nutzung der getMovies Funktion dies returned observable 
   constructor(private api: ApiService) {
     this.getMovies();
     this.getHistory();
-    this.getBookmarks();
+    //this.getBookmarks();
     this.selectedMovie ={id: -1,title:'', desc:'', year: 0 };
     
   }
@@ -71,6 +69,42 @@ export class AppComponent {
       }
     );
   }
+
+
+  addHistory = () => {
+    this.api.createHistory(this.currentLink).subscribe(
+      data => {
+        
+        this.requestedLinks.unshift(data);
+        
+        
+      },
+      error => {
+        console.log(error);
+      }
+    );  
+  }
+
+  addBookmark = () => {
+    this.api.createBookmark(this.currentLink).subscribe(
+      data => {
+        
+        this.bookmarks.unshift(data);
+        
+        
+      },
+      error => {
+        console.log(error);
+      }
+    );  
+  }
+
+
+
+
+
+
+
 
   getMovies = () => {
     //subscribing to the observable 
@@ -126,33 +160,7 @@ export class AppComponent {
     );  
   }
 
-  addHistory = () => {
-    this.api.createHistory(this.currentLink).subscribe(
-      data => {
-        
-        this.requestedLinks.unshift(data);
-        
-        
-      },
-      error => {
-        console.log(error);
-      }
-    );  
-  }
-
-  addBookmark = () => {
-    this.api.createBookmark(this.currentLink).subscribe(
-      data => {
-        
-        this.bookmarks.unshift(data);
-        
-        
-      },
-      error => {
-        console.log(error);
-      }
-    );  
-  }
+  
 
 
   deleteMovie = () => {

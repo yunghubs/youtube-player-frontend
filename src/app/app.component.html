@@ -34,7 +34,10 @@ Year <input type="text"[(ngModel)]="selectedMovie.year"/><br>
 
 <app-video-view *ngIf='videoId' [parentData]="videoId"></app-video-view>
 
-<app-bookmarks [addBookmark]='addBookmark'></app-bookmarks>
+<app-bookmarks [addBookmark]='addBookmark'
+                [getBookmarks]='getBookmarks'
+                [parentBookmarks]='bookmarks'
+></app-bookmarks>
 
 <app-history [parentLink]="currentLink"
             [parentHistory]="requestedLinks"

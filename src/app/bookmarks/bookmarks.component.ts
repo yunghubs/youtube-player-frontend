@@ -10,6 +10,10 @@ export class BookmarksComponent implements OnInit {
   constructor() { }
 
   @Input() addBookmark: any
+  @Input() getBookmarks: any
+
+  @Input('parentBookmarks') public bookmarks: any;
+  
 
   ngOnInit(): void {
   }
