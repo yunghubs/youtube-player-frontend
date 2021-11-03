@@ -1,7 +1,5 @@
-<p>history works!</p>
+<h1>History: </h1>
 
-
-<h2>{{currentLink}}</h2>
 <ul>
     <li *ngFor="let link of requestedLinks">
         <a (click)="getVideoID(link.historyLink)">{{link.historyLink}}</a>

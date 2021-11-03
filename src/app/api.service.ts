@@ -27,6 +27,12 @@ export class ApiService {
     {headers: this.httpHeaders})
   }
 
+  getNumberBookmarks(): Observable<any> { 
+    //.get takes in the url as its argument
+    return this.http.get(this.baseurl + '/bookmark/',
+    {headers: this.httpHeaders})
+  }
+
   createHistory(linkToHistory: any): Observable<any> {
     //put method
     const body = {historyLink: linkToHistory}
@@ -41,41 +47,9 @@ export class ApiService {
     {headers: this.httpHeaders})
   }
 
+}
 
 
 
-
-
-  getAllMovies(): Observable<any> {
-    //.get takes in the url as its argument
-    return this.http.get(this.baseurl + '/movies/',
-    {headers: this.httpHeaders})
-  }
-
-  getOneMovie(id: any): Observable<any> {
-    //.get takes in the url as its argument
-    return this.http.get(this.baseurl + '/movies/' + id + '/' ,
-    {headers: this.httpHeaders})
-  }
-  updateMovie(movie: any): Observable<any> {
-    //put method
-    const body = {title: movie.title , desc: movie.desc, year: movie.year}
-    return this.http.put(this.baseurl + '/movies/' + movie.id + '/' , body,
-    {headers: this.httpHeaders})
-  }
-  createMovie(movie: any): Observable<any> {
-    //put method
-    const body = {title: movie.title , desc: movie.desc, year: movie.year}
-    return this.http.post(this.baseurl + '/movies/' , body,
-    {headers: this.httpHeaders})
-  }
 
   
-
-  deleteMovie(id: any): Observable<any> {
-    //put method
-    return this.http.delete(this.baseurl + '/movies/' + id + '/',
-    {headers: this.httpHeaders})
-  }
-
-}

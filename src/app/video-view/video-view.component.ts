@@ -12,7 +12,6 @@ export class VideoViewComponent  {
   @Input('parentData') public videoId: any;
   
 
-
   }
 
 
