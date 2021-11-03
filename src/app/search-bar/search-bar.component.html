@@ -1,6 +1,12 @@
-<p>search-bar works!</p>
-
-Link <input type="text" id="link-input" #box /><br>
-
-<button (click)="getValue(box.value)" > Get Value </button>
-
+<p>You cann copy a YouTube URL into this Search Bar:</p>
+<div>
+    <div>
+        <div class="input-group">
+            <input  type="text" class="form-control" id="link-input" #box /><br>
+        </div>
+    </div>
+    <p></p>
+    <div class="pull-left" style="margin-right:5px">
+        <button type="button" class="btn btn-primary" (click)="getValue(box.value)" > Show Video </button>
+    </div>
+</div>

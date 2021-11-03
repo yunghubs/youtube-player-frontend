@@ -22,11 +22,11 @@
   </li>
 </ul>
 <hr>
-Title <input type="text" [(ngModel)]="selectedMovie.title"/><br>
+Title <input type="text" class="input-large search-query" [(ngModel)]="selectedMovie.title"/><br>
 Desc <input type="text"[(ngModel)]="selectedMovie.desc"/><br>
 Year <input type="text"[(ngModel)]="selectedMovie.year"/><br>
 
-<button class="btn btn-primary"(click)="updateMovie()" > PUT </button>
+<button class="btn btn-primary" (click)="updateMovie()" > PUT </button>
 <button (click)="createMovie()" > POST </button>
 <button (click)="deleteMovie()" > DELETE </button>
 
@@ -37,6 +37,7 @@ Year <input type="text"[(ngModel)]="selectedMovie.year"/><br>
 <app-bookmarks [addBookmark]='addBookmark'
                 [getBookmarks]='getBookmarks'
                 [parentBookmarks]='bookmarks'
+                
 ></app-bookmarks>
 
 <app-history [parentLink]="currentLink"

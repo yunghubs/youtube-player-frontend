@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './bookmarks.component.html',
   styleUrls: ['./bookmarks.component.css']
 })
-export class BookmarksComponent implements OnInit {
+export class BookmarksComponent {
 
   constructor() { }
 
@@ -13,9 +13,10 @@ export class BookmarksComponent implements OnInit {
   @Input() getBookmarks: any
 
   @Input('parentBookmarks') public bookmarks: any;
-  
 
-  ngOnInit(): void {
-  }
+
+
+
+
 
 }

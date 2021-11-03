@@ -1,11 +1,13 @@
 <p>bookmarks works!</p>
+<div class="btn-toolbar">
+    <button class="btn btn-secondary"(click)="addBookmark()"> Add to Bookmarks </button>
+    
+    <button class="btn btn-secondary"(click)="getBookmarks()"> Show Bookmarks </button>
+</div>
 
-<button (click)="addBookmark()"> Add to Bookmarks </button>
-<button (click)="getBookmarks()"> Show Bookmarks </button>
 <ul>
     <li *ngFor="let entrie of bookmarks">
         <a>{{entrie.bookmarkLink}}</a>
     </li>
 </ul>
-
 
