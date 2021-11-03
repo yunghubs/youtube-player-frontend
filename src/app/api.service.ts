@@ -27,12 +27,6 @@ export class ApiService {
     {headers: this.httpHeaders})
   }
 
-  getNumberBookmarks(): Observable<any> { 
-    //.get takes in the url as its argument
-    return this.http.get(this.baseurl + '/bookmark/',
-    {headers: this.httpHeaders})
-  }
-
   createHistory(linkToHistory: any): Observable<any> {
     //put method
     const body = {historyLink: linkToHistory}

@@ -15,7 +15,7 @@ export class AppComponent {
   
   //static
   //historyLinks = [{link: 'testlink'}];
-  public numberOfBookmarks: any = [];
+  
 
   requestedLinks: any = [];
   public bookmarks: any = [];
@@ -30,11 +30,7 @@ export class AppComponent {
     this.currentLink = val;
     this.videoId = this.currentLink.split("v=")[1]
     
-
-    if (this.requestedLinks.some((requestedLink: any) => requestedLink.historyLink === val)){
-
-      return
-    }
+    
     this.addHistory();
     
   }
@@ -42,8 +38,7 @@ export class AppComponent {
   //wir haben instanz von apiService --> Nutzung der getMovies Funktion dies returned observable 
   constructor(private api: ApiService) {
     this.getHistory();
-    //this.addHistory();
-    //this.getBookmarks();
+    this.getBookmarks();
     
     
   }
@@ -74,18 +69,6 @@ export class AppComponent {
     );
   }
 
-  getNumberBookmarks = () => {
-    //subscribing to the observable 
-    this.api.getNumberBookmarks().subscribe(
-      data => {
-        this.numberOfBookmarks = data.reverse();
-        
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
 
 
   addHistory = () => {
@@ -102,11 +85,17 @@ export class AppComponent {
     );  
   }
 
+  
+
   addBookmark = () => {
+
+    if (this.bookmarks.some((bookmark: any) => bookmark.bookmarkLink === this.currentLink)){
+
+      return
+    }
     this.api.createBookmark(this.currentLink).subscribe(
       data => {
 
-        
         
         this.bookmarks.unshift(data);
         

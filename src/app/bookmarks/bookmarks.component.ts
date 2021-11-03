@@ -5,26 +5,18 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './bookmarks.component.html',
   styleUrls: ['./bookmarks.component.css']
 })
-export class BookmarksComponent implements OnInit {
-
-  @Input() getNumberBookmarks: any
-  @Input('parentNumberOfBookmarks') public numberOfBookmarks: any;
-
-  ngOnInit(): void{
-
-    this.getNumberBookmarks();
-    console.log(this.numberOfBookmarks);
-
-  }
+export class BookmarksComponent {
 
   constructor() { }
 
-
-  @Input() addBookmark: any
-  @Input() getBookmarks: any
-
+  @Input() addBookmark: any;
   @Input('parentBookmarks') public bookmarks: any;
 
+  showingBookmarks: boolean = false;
 
+  showBookmarks() {
+    this.showingBookmarks = !this.showingBookmarks;
+
+  } 
 
 }

@@ -2,6 +2,6 @@
 
 <ul>
     <li *ngFor="let link of requestedLinks">
-        <a (click)="getVideoID(link.historyLink)">{{link.historyLink}}</a>
+        <a class="link-primary" (click)="getVideoID(link.historyLink)">{{link.historyLink}}</a>
     </li>
 </ul>
