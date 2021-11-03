@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
 
-//metadata to the class in form of decorator(component): function atached to the class
+
 @Component({
-  selector: 'app-root', //where the .html file get rendert
-  templateUrl: './app.component.html',//represents the view for this component
+  selector: 'app-root', 
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   providers: [ApiService]
 })
-//class: contains variables somtiems title 
+
 export class AppComponent {  
 
   requestedLinks: any = [];
@@ -29,7 +29,7 @@ export class AppComponent {
     
   }
 
-  //wir haben instanz von apiService --> Nutzung der getMovies Funktion dies returned observable 
+  
   constructor(private api: ApiService) {
     this.getHistory();
     this.getBookmarks();
