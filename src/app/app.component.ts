@@ -9,13 +9,7 @@ import { ApiService } from './api.service';
   providers: [ApiService]
 })
 //class: contains variables somtiems title 
-export class AppComponent {
-  //static array mit object
-
-  
-  //static
-  //historyLinks = [{link: 'testlink'}];
-  
+export class AppComponent {  
 
   requestedLinks: any = [];
   public bookmarks: any = [];

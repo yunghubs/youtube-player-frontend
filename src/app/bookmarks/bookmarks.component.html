@@ -1,8 +1,10 @@
-<p>Number of Bookmarks: {{bookmarks.length}}</p>
+<p></p>
 <div class="btn-toolbar">
     <button class="btn btn-secondary"(click)="addBookmark()"> Add to my Bookmarks </button>
     <div class="p-2"></div>
     <button class="btn btn-secondary"(click)="showBookmarks()"> Show my Bookmarks </button>
+    <div class="p-2"></div>
+    <p>Number of Bookmarks: {{bookmarks.length}}</p>
 </div>
 <ul *ngIf="showingBookmarks"> 
     <li *ngFor="let entrie of bookmarks">
